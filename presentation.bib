@@ -1,0 +1,168 @@
+% !TeX encoding = UTF-8
+% !TeX spellcheck = en_US
+% !TeX root = bachelor_thesis_presentation.tex
+
+@thesis{David_Oberacker_30_September_2019,
+author = {David Oberacker},
+editor = {M.Sc. Yongzhou Zhang},
+keywords = {Instance Segmentation, Computer Vision, Deep-Learning, Robot Grasping,
+Real-Time Systems},
+location = {Karlsruhe, Germany},
+month = {09},
+pages =  {108},
+school = {Karlsruhe Institute of Technology},
+title = {Realtime Instance Segmentation of Household Objects for Robotic Grasping},
+year = {2019}
+}
+@inproceedings{6385692,
+    Abstract = {We present an algorithm to segment an unstructured table top scene. Operating on the depth image of a Kinect camera, the algorithm robustly separates objects of previously unknown shape in cluttered scenes of stacked and partially occluded objects. The model-free algorithm finds smooth surface patches which are subsequently combined to form object hypotheses. We evaluate the algorithm regarding its robustness and real-time capabilities and discuss its advantages compared to existing approaches as well as its weak spots to be addressed in future work. We also report on an autonomous grasping experiment with the Shadow Robot Hand which employs the estimated shape and pose of segmented objects.},
+    Author = {A. {{\"U}ckermann} and C. {Elbrechter} and R. {Haschke} and H. {Ritter}},
+    Booktitle = {2012 IEEE/RSJ International Conference on Intelligent Robots and Systems},
+    Doi = {10.1109/IROS.2012.6385692},
+    Keywords = {image segmentation;image sensors;manipulators;robot vision;3D scene segmentation;autonomous robot grasping;unstructured table top scene;depth image;Kinect camera;cluttered scenes;occluded objects;model-free algorithm;smooth surface patches;autonomous grasping experiment;shadow robot hand;Image edge detection;Image segmentation;Surface treatment;Robustness;Face;Noise;Shape},
+    Month = {Oct},
+    Pages = {1734-1740},
+    Title = {3D scene segmentation for autonomous robot grasping},
+    Year = {2012},
+    Bdsk-Url-1 = {https://doi.org/10.1109/IROS.2012.6385692}}
+
+@article{Bolya:2019aa,
+    Archiveprefix = {arXiv},
+    Author = {Daniel Bolya and Chong Zhou and Fanyi Xiao and Yong Jae Lee},
+    Bibsource = {dblp computer science bibliography, https://dblp.org},
+    Biburl = {https://dblp.org/rec/bib/journals/corr/abs-1904-02689},
+    Date-Modified = {2019-07-11 12:06:27 +0200},
+    Eprint = {1904.02689},
+    Journal = {CoRR},
+    Timestamp = {Wed, 24 Apr 2019 12:21:25 +0200},
+    Title = {{YOLACT:} Real-time Instance Segmentation},
+    Url = {http://arxiv.org/abs/1904.02689},
+    Volume = {abs/1904.02689},
+    Year = {2019},
+    Bdsk-Url-1 = {http://arxiv.org/abs/1904.02689}}
+
+@article{DBLP:journals/corr/abs-1712-00726,
+    Abstract = {
+    In object detection, an intersection over union (IoU) threshold is required to define positives and negatives. 
+    An object detector, trained with low IoU threshold, e.g. 0.5, usually produces noisy detections. 
+    However, detection performance tends to degrade with increasing the IoU thresholds. 
+    Two main factors are responsible for this: 1) overfitting during training, due to exponentially vanishing positive samples, and 2) inference-time mismatch between the IoUs for which the detector is optimal and those of the input hypotheses. 
+    A multi-stage object detection architecture, the Cascade R-CNN, is proposed to address these problems. 
+    It consists of a sequence of detectors trained with increasing IoU thresholds, to be sequentially more selective against close false positives. 
+    The detectors are trained stage by stage, leveraging the observation that the output of a detector is a good distribution for training the next higher quality detector. 
+    The resampling of progressively improved hypotheses guarantees that all detectors have a positive set of examples of equivalent size, reducing the overfitting problem. 
+    The same cascade procedure is applied at inference, enabling a closer match between the hypotheses and the detector quality of each stage. 
+    A simple implementation of the Cascade R-CNN is shown to surpass all single-model object detectors on the challenging COCO dataset. Experiments also show that the Cascade R-CNN is widely applicable across detector architectures, achieving consistent gains independently of the baseline detector strength.
+    },
+    Archiveprefix = {arXiv},
+    Author = {Zhaowei Cai and Nuno Vasconcelos},
+    Bibsource = {dblp computer science bibliography, https://dblp.org},
+    Biburl = {https://dblp.org/rec/bib/journals/corr/abs-1712-00726},
+    Eprint = {1712.00726},
+    Journal = {CoRR},
+    Timestamp = {Mon, 13 Aug 2018 16:47:49 +0200},
+    Title = {Cascade {R-CNN:} Delving into High Quality Object Detection},
+    Url = {http://arxiv.org/abs/1712.00726},
+    Volume = {abs/1712.00726},
+    Year = {2017},
+    Bdsk-Url-1 = {http://arxiv.org/abs/1712.00726}}
+
+
+
+@article{DBLP:journals/corr/abs-1802-02611,
+    author    = {Liang{-}Chieh Chen and
+    Yukun Zhu and
+    George Papandreou and
+    Florian Schroff and
+    Hartwig Adam},
+    title     = {Encoder-Decoder with Atrous Separable Convolution for Semantic Image
+    Segmentation},
+    journal   = {CoRR},
+    volume    = {abs/1802.02611},
+    year      = {2018},
+    url       = {http://arxiv.org/abs/1802.02611},
+    archivePrefix = {arXiv},
+    eprint    = {1802.02611},
+    timestamp = {Mon, 13 Aug 2018 16:47:38 +0200},
+    biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1802-02611},
+    bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@article{DBLP:journals/corr/BadrinarayananK15,
+    author    = {Vijay Badrinarayanan and
+    Alex Kendall and
+    Roberto Cipolla},
+    title     = {SegNet: {A} Deep Convolutional Encoder-Decoder Architecture for Image
+    Segmentation},
+    journal   = {CoRR},
+    volume    = {abs/1511.00561},
+    year      = {2015},
+    url       = {http://arxiv.org/abs/1511.00561},
+    archivePrefix = {arXiv},
+    eprint    = {1511.00561},
+    timestamp = {Mon, 13 Aug 2018 16:46:06 +0200},
+    biburl    = {https://dblp.org/rec/bib/journals/corr/BadrinarayananK15},
+    bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+@ARTICLE{2019arXiv190804067X,
+    author = {{Xu}, Wenqiang and {Wang}, Haiyang and {Qi}, Fubo and {Lu}, Cewu},
+    title = "{Explicit Shape Encoding for Real-Time Instance Segmentation}",
+    journal = {arXiv e-prints},
+    keywords = {Computer Science - Computer Vision and Pattern Recognition},
+    year = "2019",
+    month = "Aug",
+    eid = {arXiv:1908.04067},
+    pages = {arXiv:1908.04067},
+    archivePrefix = {arXiv},
+    eprint = {1908.04067},
+    primaryClass = {cs.CV},
+    adsurl = {https://ui.adsabs.harvard.edu/abs/2019arXiv190804067X},
+    adsnote = {Provided by the SAO/NASA Astrophysics Data System}
+}
+
+@article{DBLP:journals/corr/abs-1901-07518,
+    author    = {Kai Chen and
+    Jiangmiao Pang and
+    Jiaqi Wang and
+    Yu Xiong and
+    Xiaoxiao Li and
+    Shuyang Sun and
+    Wansen Feng and
+    Ziwei Liu and
+    Jianping Shi and
+    Wanli Ouyang and
+    Chen Change Loy and
+    Dahua Lin},
+    title     = {Hybrid Task Cascade for Instance Segmentation},
+    journal   = {CoRR},
+    volume    = {abs/1901.07518},
+    year      = {2019},
+    url       = {http://arxiv.org/abs/1901.07518},
+    archivePrefix = {arXiv},
+    eprint    = {1901.07518},
+    timestamp = {Sat, 02 Feb 2019 16:56:00 +0100},
+    biburl    = {https://dblp.org/rec/bib/journals/corr/abs-1901-07518},
+    bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+
+
+@article{DBLP:journals/corr/HeGDG17,
+    author    = {Kaiming He and
+    Georgia Gkioxari and
+    Piotr Doll{\'{a}}r and
+    Ross B. Girshick},
+    title     = {Mask {R-CNN}},
+    journal   = {CoRR},
+    volume    = {abs/1703.06870},
+    year      = {2017},
+    url       = {http://arxiv.org/abs/1703.06870},
+    archivePrefix = {arXiv},
+    eprint    = {1703.06870},
+    timestamp = {Mon, 13 Aug 2018 16:46:36 +0200},
+    biburl    = {https://dblp.org/rec/bib/journals/corr/HeGDG17},
+    bibsource = {dblp computer science bibliography, https://dblp.org}
+}
+
+

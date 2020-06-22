@@ -1,0 +1,10 @@
+image: d4ve/latex
+
+build:
+  script:
+    - make -B clean
+    - ls -l
+    - make -B all
+  artifacts:
+    paths:
+      - "*.pdf"
