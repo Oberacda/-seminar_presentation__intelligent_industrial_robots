@@ -68,6 +68,10 @@
 \usepackage{multicol}
 \usepackage{booktabs}
 
+\usepackage{glossaries}
+\usepackage{acronym}
+\usepackage{listings}
+
 % the presentation starts here
 
 \title[Automated Programming of Programmable Logic Controllers]{Seminar Intelligent Industrial Robots}
@@ -84,6 +88,10 @@
 \addbibresource{presentation.bib}
 \bibhang1em
 
+\newacronym{acn:PLC}{PLC}{Programmable Logic Controller}
+
+\makeglossaries
+
 \begin{document}
 
 % change the following line to "ngerman" for German style date and logos
@@ -94,13 +102,6 @@
 \titlepage
 \end{frame}
 
-%table of contents
-\begin{frame}{Outline}
-\tableofcontents
-\end{frame}
-
-\section{Introduction}
-
 %\begin{frame}{Introduction}
 %    \begin{figure}
 %        \centering
@@ -109,15 +110,22 @@
 %\footcitetext{6385692}
 %\end{frame}
 
+%table of contents
+\begin{frame}{Outline}
+\tableofcontents
+\end{frame}
+
+\section{Introduction}
+
 \begin{frame}{Introduction}
     
-
     \begin{itemize}
-        \item Grasping of moving object is one of important operations for modern robots.
-        \item Objects have to be \textbf{detected} and \textbf{localized}.
-        \item Semantic segmentation can be used $\rightarrow$ Multiple instances of same class can not be distinguished.
+        \item Automation is a important factor in todays industry.
+        \item With Industry 4.0 automation systems have to get more flexible.
+        \item Common controller in automation are~\acrfull{acn:PLC}.
+        \item They are programmed in a static and non-flexible manner.
     \end{itemize}
-    $\Rightarrow $ Are state of the art instance segmentation algorithms viable for real-time applications ?
+    $\Rightarrow $ Are there ways to program a~\acrshort{acn:PLC} in a more flexible way ?
     
 \end{frame}
 
@@ -127,24 +135,21 @@
 \begin{columns}
     \begin{column}{0.5\textwidth}
         \begin{itemize}
-            \item Every Pixel is labeled.
-            \item Instances of the same class \textbf{can not be distinguished}.
-            \item Decoder-encoder architecture.
-            \item Commonly used architectures:
-            \begin{itemize}
-                \item DeepLabV3~\footnotemark
-                
-                \item SegNet~\footnotemark
-                
-            \end{itemize}
+            \item Specialized industrial computers.
+            \item Fixed~\textbf{cycle based} execution semantic:
+            \begin{enumerate}
+                \item Copy~\textbf{input} variables values from the physical interfaces to the RAM.
+                \item \textbf{Execution} of the~\textbf{user program}.
+                \item Copy~\textbf{output} variable values from the RAM to the physical interfaces.
+            \end{enumerate}
+            \item Programmed via the languages defined in the IEC 61131-3 standard.
         \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
-        \includegraphics[width=\textwidth]{figures/segnet_example.png}
+        \includegraphics[width=\textwidth]{figures/PLC_Architecture.png}
+        {\footnotesize Source:~\cite{BOLTON200653}}
     \end{column}
 \end{columns}
-\footcitetext{DBLP:journals/corr/abs-1802-02611}
-\footcitetext{DBLP:journals/corr/BadrinarayananK15}
 \end{frame}
 
 \subsection{IEC 61131-3 Languages}
@@ -153,48 +158,35 @@
 \begin{columns}
 	\begin{column}{0.5\textwidth}
 		\begin{itemize}
-			\item Every Pixel is labeled.
-			\item Different instances of the same class \textbf{are separated}.
-			\item More complex pipelines.
-			\item Commonly used architectures:
-			\begin{itemize}
-				\item Mask R-CNN~\footnotemark
-				\item Hybrid Task Cascade~\footnotemark
-				\item ESE-Seg~\footnotemark
-			\end{itemize}
+            \item Graphical programming language.
+            \item Historical importance.
+			\item Similar to electrical relay diagrams.
+			\item The named contacts are inputs, outputs and state variables.
+			\item Can be combined with different operators (e.g. Not, $ >$, etc.).
 		\end{itemize}
 	\end{column}
 	\begin{column}{0.5\textwidth}
-		\includegraphics[width=\textwidth]{figures/cmrcnn_mobilenet_fat.pdf}
+		\includegraphics[width=0.8\textwidth]{figures/ld.png}
+       {\footnotesize  Source:~\url{https://www.plcacademy.com/ladder-logic-examples/}}
 	\end{column}
 \end{columns}
-\footcitetext{DBLP:journals/corr/HeGDG17}
-\footcitetext{DBLP:journals/corr/abs-1901-07518}
-\footcitetext{2019arXiv190804067X}
 \end{frame}
 
-\begin{frame}{Structured Text}
+\begin{frame}[fragile]{Structured Text}
     \begin{columns}
         \begin{column}{0.5\textwidth}
            \begin{itemize}
-               \item Every Pixel is labeled.
-               \item Different instances of the same class \textbf{are separated}.
-               \item More complex pipelines.
-               \item Commonly used architectures:
-               \begin{itemize}
-                   \item Mask R-CNN~\footnotemark
-                   \item Hybrid Task Cascade~\footnotemark
-                   \item ESE-Seg~\footnotemark
-               \end{itemize}
+               \item Textual programming language.
+               \item Syntax is similar to PASCAL.
+               \item Allows for more complex control flows.
+               \item Currently the most used IEC 61131-3 language.
            \end{itemize}
         \end{column}
         \begin{column}{0.5\textwidth}
-            \includegraphics[width=\textwidth]{figures/cmrcnn_mobilenet_fat.pdf}
+            \includegraphics[width=0.8\textwidth]{./figures/st.png}
+            {\footnotesize Source:~\url{http://www.contactandcoil.com/twincat-3-tutorial/structured-text/}}
         \end{column}
 \end{columns}
-\footcitetext{DBLP:journals/corr/HeGDG17}
-\footcitetext{DBLP:journals/corr/abs-1901-07518}
-\footcitetext{2019arXiv190804067X}
 \end{frame}
 
 \section{Automated programming of PLCs}
@@ -419,6 +411,10 @@
 \beginbackup
 
 \nocite{*}
+
+\begin{frame}[allowframebreaks]{Glossaries}
+\printglossaries
+\end{frame}
 
 \begin{frame}[allowframebreaks]{References}
 \printbibliography
