@@ -89,6 +89,8 @@
 \bibhang1em
 
 \newacronym{acn:PLC}{PLC}{Programmable Logic Controller}
+\newacronym{acn:UML}{UML}{Unified Modeling Language}
+\newacronym{acn:SysML}{SysML}{Systems Modeling Language}
 
 \makeglossaries
 
@@ -191,168 +193,124 @@
 
 \section{Automated programming of PLCs}
 
-\begin{frame}{Datasets}
+\begin{frame}{Automated programming of PLCs}
 \begin{itemize}
-    \item Common Objects in Context (COCO)
-    \begin{itemize}
-        \item 115 000 annotated images.
-        \item Indoor and outdoor scenes.
-        \item 80 foreground object classes.
-    \end{itemize}
-    \item Falling Things Dataset (FAT)
-    \begin{itemize}
-        \item 60 000 annotated images.
-        \item Synthetic dataset.
-        \item Objects failing through synthetic backgrounds.
-    \end{itemize}
-    \item YCB Video Dataset (YCB)
-    \begin{itemize}
-        \item 12 000 annotated images.
-        \item Video frames from a camera pan around objects.
-        \item Same objects as in the FAT dataset.
-    \end{itemize}
+    \item The IEC 61131-3 languages are static in their programming.
+    \item They are~\textbf{not} primarily designed for larger or dynamic systems.
+    \item Modern software engineering methods like model-driven development are not natively supported.
+    \item Rapid changes to the system become necessary.
+    \item Validation and verification are crucial for automation systems.
 \end{itemize}
+$\Rightarrow$ Possible Solution: Programming methods that can \textbf{automatically} and \textbf{correctly} transform high-level specifications to low-level IEC 61131-3 code.
 \end{frame}
 
 \subsection{C/C++-based programming}
 
-\begin{frame}{Datasets}
+\begin{frame}{C/C++-based programming}
 \begin{itemize}
-	\item Common Objects in Context (COCO)
-	\begin{itemize}
-		\item 115 000 annotated images.
-		\item Indoor and outdoor scenes.
-		\item 80 foreground object classes.
-	\end{itemize}
-	\item Falling Things Dataset (FAT)
-	\begin{itemize}
-		\item 60 000 annotated images.
-		\item Synthetic dataset.
-		\item Objects failing through synthetic backgrounds.
-	\end{itemize}
-	\item YCB Video Dataset (YCB)
-	\begin{itemize}
-		\item 12 000 annotated images.
-		\item Video frames from a camera pan around objects.
-		\item Same objects as in the FAT dataset.
-	\end{itemize}
+	\item C/C++ are widespread systems programming languages.
+    \item They allow access to low-level system operations (e.g. memory management).
+    \item They support high-level abstractions (e.g. classes, modules).
+	\item Widely used in micro controller programming.
+    \item Currently two~\acrshort{acn:PLC} development environment allow for C/C++ POUs:
+    \begin{itemize}
+        \item Beckhoff TwinCAT3 
+        \item B\&R Automation Studio
+    \end{itemize}
+    \item Both provide tools to ensure compliance with the~\acrshort{acn:PLC} execution semantics.
 \end{itemize}
+$\Rightarrow$ High-level programming is supported; Automatic generation of code or validation is not supported.
 \end{frame}
 
 \subsection{Formal description based}
 
+\begin{frame}{Formal specification based}
+\begin{itemize}
+    \item Code generation from a formal specification.
+    \item Allows for validation of the code against the specification.
+    \item Design from a high-level abstraction of the control problem.
+    \item Can either be model or non-model based.
+    \item Widespread practice in software engineering or industrial plant design.
+\end{itemize}
+In the following section I present these formalizations:
+\begin{itemize}
+    \item Linear Temporal Logic
+    \item UML/SysML
+    \item Simulink
+    \item PLCspecif
+\end{itemize}
+\end{frame}
+
 \begin{frame}{Linear Temporal Logic}
 \begin{itemize}
-	\item Common Objects in Context (COCO)
-	\begin{itemize}
-		\item 115 000 annotated images.
-		\item Indoor and outdoor scenes.
-		\item 80 foreground object classes.
-	\end{itemize}
-	\item Falling Things Dataset (FAT)
-	\begin{itemize}
-		\item 60 000 annotated images.
-		\item Synthetic dataset.
-		\item Objects failing through synthetic backgrounds.
-	\end{itemize}
-	\item YCB Video Dataset (YCB)
-	\begin{itemize}
-		\item 12 000 annotated images.
-		\item Video frames from a camera pan around objects.
-		\item Same objects as in the FAT dataset.
-	\end{itemize}
+	\item Modal logic that allows to specify time based behavior.
+    \item Conditions can be formalized over time constraints (e.g. something is true for all possible future states).
+	\item Time is represented as a sequence of system states.
+    \item \cite{Kuzmin:2013} use this to specify the controller behavior:
+    \begin{itemize}
+        \item Reactions to input changes are represented as LTL formula.
+        \item Provides strong verification and validation methods.
+        \item Not intuitive to use.
+        \item Requires a deep understanding of modal logic.
+    \end{itemize}
 \end{itemize}
+
+\begin{equation}
+GX\left(V > \_V \rightarrow OldValCond \land FiringCond \land V := NewValExpr \right)
+\label{eq:increase}
+\end{equation}
+
 \end{frame}
 
 \begin{frame}{UML / SysML}
-\begin{itemize}
-	\item Common Objects in Context (COCO)
-	\begin{itemize}
-		\item 115 000 annotated images.
-		\item Indoor and outdoor scenes.
-		\item 80 foreground object classes.
-	\end{itemize}
-	\item Falling Things Dataset (FAT)
-	\begin{itemize}
-		\item 60 000 annotated images.
-		\item Synthetic dataset.
-		\item Objects failing through synthetic backgrounds.
-	\end{itemize}
-	\item YCB Video Dataset (YCB)
-	\begin{itemize}
-		\item 12 000 annotated images.
-		\item Video frames from a camera pan around objects.
-		\item Same objects as in the FAT dataset.
-	\end{itemize}
-\end{itemize}
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item \acrfull{acn:UML} and~\acrfull{acn:SysML} are widespread modeling languages.
+            \item Several approaches use adapted state-charts and class-diagrams to model systems.
+            \item \cite{WITSCH2015} and~\cite{VH:2014} define plcML.
+            \begin{itemize}
+                \item Allows to specify structure and behavior of the controller and its in-/outputs.
+                \item Enables faster and more reliable controller development.
+                \item The model can be translated into ST code.
+            \end{itemize}
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{./figures/modAT4rMS_struct.png}
+       {\footnotesize  Source:~\cite{VH:2014}}
+    \end{column}
+\end{columns}
+
 \end{frame}
 
 \begin{frame}{Simulink}
-\begin{itemize}
-	\item Common Objects in Context (COCO)
-	\begin{itemize}
-		\item 115 000 annotated images.
-		\item Indoor and outdoor scenes.
-		\item 80 foreground object classes.
-	\end{itemize}
-	\item Falling Things Dataset (FAT)
-	\begin{itemize}
-		\item 60 000 annotated images.
-		\item Synthetic dataset.
-		\item Objects failing through synthetic backgrounds.
-	\end{itemize}
-	\item YCB Video Dataset (YCB)
-	\begin{itemize}
-		\item 12 000 annotated images.
-		\item Video frames from a camera pan around objects.
-		\item Same objects as in the FAT dataset.
-	\end{itemize}
-\end{itemize}
+\begin{columns}
+    \begin{column}{0.5\textwidth}
+        \begin{itemize}
+            \item Modeling software integrated into MathWorks MATLAB environment.
+            \item Allows modeling and simulation of systems in multiple domains via toolboxes.
+            \item Provide a coder that translates a model into ST code.
+            \item \cite{7535242} extend this workflow with bound model checker verification.
+            \item Easy to use method for designing large and complex systems.
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.5\textwidth}
+        \includegraphics[width=\textwidth]{./figures/simulink.jpg}
+       {\footnotesize  Source:~\url{https://de.mathworks.com/videos/simulink-plc-coder-overview-61206.html}}
+    \end{column}
+\end{columns}
 \end{frame}
 
 \begin{frame}{plcSpecif}
 \begin{itemize}
-	\item Common Objects in Context (COCO)
-	\begin{itemize}
-		\item 115 000 annotated images.
-		\item Indoor and outdoor scenes.
-		\item 80 foreground object classes.
-	\end{itemize}
-	\item Falling Things Dataset (FAT)
-	\begin{itemize}
-		\item 60 000 annotated images.
-		\item Synthetic dataset.
-		\item Objects failing through synthetic backgrounds.
-	\end{itemize}
-	\item YCB Video Dataset (YCB)
-	\begin{itemize}
-		\item 12 000 annotated images.
-		\item Video frames from a camera pan around objects.
-		\item Same objects as in the FAT dataset.
-	\end{itemize}
-\end{itemize}
-\end{frame}
-
-\begin{frame}{GRAFCET}
-\begin{itemize}
-	\item Common Objects in Context (COCO)
-	\begin{itemize}
-		\item 115 000 annotated images.
-		\item Indoor and outdoor scenes.
-		\item 80 foreground object classes.
-	\end{itemize}
-	\item Falling Things Dataset (FAT)
-	\begin{itemize}
-		\item 60 000 annotated images.
-		\item Synthetic dataset.
-		\item Objects failing through synthetic backgrounds.
-	\end{itemize}
-	\item YCB Video Dataset (YCB)
-	\begin{itemize}
-		\item 12 000 annotated images.
-		\item Video frames from a camera pan around objects.
-		\item Same objects as in the FAT dataset.
-	\end{itemize}
+    \item \cite{7819191} specify a custom graphical formalization language.
+    \item It models systems with interacting modules.
+    \item Modules consist of a structural and behavioral description.
+    \item Behavior is represented as a mealy machine.
+    \item They provide methods for formally verifying system properties.
+    \item Additionally they focused on ease of use, traceability and readability.
+    \item It is designed specifically for safety critical use cases.
 \end{itemize}
 \end{frame}
 
