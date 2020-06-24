@@ -316,44 +316,57 @@ GX\left(V > \_V \rightarrow OldValCond \land FiringCond \land V := NewValExpr \r
 
 \section{Risks of automated programming}
 
-\begin{frame}{Transformation function correctness}
+\begin{frame}{Risks of automated programming}
+\begin{itemize}
+    \item \acrlong{acn:PLC} are often used in safety critical or real-time use cases.
+    \item This requires a clear assessment of possible risks.
+    \item Automatic generation of source code has inherent risks.
+\end{itemize}
+$\Rightarrow$ They need to be addressed before the system can be deployed.
+
+Two components of the risk are addressed:
+\begin{itemize}
+    \item Transformation function correctness
+    \item Runtime behavior guarantees
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Risks of automated programming}
 
 \begin{block}{Transformation function correctness}
 	\begin{itemize}
-		\item Processing time is strongly bound to the architecture.
-		\item Optimizing the processing times is a important topic for modern architectures.
+		\item Code generators have to ensure consistency between the code and modeled behavior.
+		\item Must be specified and analyzed for every approach.
+        \item Proof is often only given for common cases not all possible cases.
+        \item Additionally traceability between the specification and the code should be possible.
 	\end{itemize}
 \end{block}
-\end{frame}
-
-\begin{frame}{Runtime guarantees}
-
+\pause
 \begin{block}{Runtime guarantees}
-	\begin{itemize}
-		\item Processing time is strongly bound to the architecture.
-		\item Optimizing the processing times is a important topic for modern architectures.
-	\end{itemize}
+    \begin{itemize}
+        \item Behavior of the model on the actual~\acrshort{acn:PLC} has to be regarded.
+        \item Transformations often use custom state machines that work over multiple PLC cycles.
+        \item Validation methods have to ensure that the modeled behavior is consistent with the physical behavior.
+    \end{itemize}
 \end{block}
 \end{frame}
 
 \section{Conclusions}
 \begin{frame}{Conclusions}
 
-\begin{block}{Processing Time Profiling}
-	\begin{itemize}
-		\item Processing time is strongly bound to the architecture.
-		\item Optimizing the processing times is a important topic for modern architectures.
-	\end{itemize}
-\end{block}
-\pause
-\begin{block}{Household Object Robot Grasping}
+\begin{itemize}
+    \item Modern automation systems require new programming methods.
+    \pause
+    \item Automated code generation from high-level abstractions is a viable options.
+    \pause
+    \item There are already well supported and capable approaches available (Simulink PLC coder, plcML)
     \begin{itemize}
-        \item Qualitative results are promising for future research.
-        \item Robustness has to be improved for real world aplications.
-        \item Dataset selection is relevant for result quality.
-        \item When looking at functional safety, the current evaluation methods are not sufficient.
+        \item They are more effecitve and efficient as current approaches.
+        \item They have high user acceptance and lower initial skill requirements.
     \end{itemize}
-\end{block}
+    \pause
+    \item Efficient methods for risk analysis and validation on the deployment target are required.
+\end{itemize}
 \end{frame}
 
 \begin{frame}
