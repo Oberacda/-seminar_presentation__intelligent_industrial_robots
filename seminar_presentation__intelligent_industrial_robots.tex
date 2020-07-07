@@ -113,21 +113,21 @@
 %\end{frame}
 
 %table of contents
-\begin{frame}{Outline}
-\tableofcontents
-\end{frame}
+%\begin{frame}{Outline}
+%\tableofcontents
+%\end{frame}
 
 \section{Introduction}
 
 \begin{frame}{Introduction}
     
     \begin{itemize}
-        \item Automation is a important factor in todays industry.
-        \item With Industry 4.0 automation systems have to get more flexible.
-        \item Common controller in automation are~\acrfull{acn:PLC}.
-        \item They are programmed in a static and non-flexible manner.
+        \item Automation is an important factor.
+        \item Industry 4.0 requires flexibility.
+        \item \acrfull{acn:PLC} are common.
+        \item Programming of~\acrshort{acn:PLC} is non-flexible.
     \end{itemize}
-	\pause
+    \pause
     $\Rightarrow $ Are there ways to program a~\acrshort{acn:PLC} in a more flexible way ?
     
 \end{frame}
@@ -139,13 +139,13 @@
     \begin{column}{0.5\textwidth}
         \begin{itemize}
             \item Specialized industrial computers.
-            \item Fixed~\textbf{cycle based} execution semantic:
+            \item \textbf{Cycle based} execution semantic:
             \begin{enumerate}
-                \item Copy~\textbf{input} variables values from the physical interfaces to the RAM.
-                \item \textbf{Execution} of the~\textbf{user program}.
-                \item Copy~\textbf{output} variable values from the RAM to the physical interfaces.
+                \item Read~\textbf{input} values.
+                \item \textbf{Execute} the~\textbf{user program}.
+                \item Publish~\textbf{output} values.
             \end{enumerate}
-            \item Programmed via the languages defined in the IEC 61131-3 standard.
+            \item Standardized IEC 61131-3 programming languages.
         \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
@@ -157,69 +157,47 @@
 
 \subsection{IEC 61131-3 Languages}
 
-\begin{frame}{Ladder Diagram}
-\begin{columns}
-	\begin{column}{0.5\textwidth}
-		\begin{itemize}
-            \item Graphical programming language.
-            \item Historical importance.
-			\item Similar to electrical relay diagrams.
-			\item The named contacts are inputs, outputs and state variables.
-			\item Can be combined with different operators (e.g. Not, $ >$, etc.).
-		\end{itemize}
-	\end{column}
-	\begin{column}{0.5\textwidth}
-		\includegraphics[width=0.8\textwidth]{figures/ld.png}
-       {\footnotesize  Source:~\url{https://www.plcacademy.com/ladder-logic-examples/}}
-	\end{column}
-\end{columns}
-\end{frame}
-
-\begin{frame}[fragile]{Structured Text}
+\begin{frame}{IEC 61131-3 Languages}
     \begin{columns}
-        \begin{column}{0.5\textwidth}
-           \begin{itemize}
-               \item Textual programming language.
-               \item Syntax is similar to PASCAL.
-               \item Allows for more complex control flows.
-               \item Currently the most used IEC 61131-3 language.
-           \end{itemize}
-        \end{column}
+    	\begin{column}{0.5\textwidth}
+    		\includegraphics[width=0.8\textwidth]{figures/ld.png}
+           {\footnotesize  Source:~\url{https://www.plcacademy.com/ladder-logic-examples/}}
+    	\end{column}
         \begin{column}{0.5\textwidth}
             \includegraphics[width=0.8\textwidth]{./figures/st.png}
             {\footnotesize Source:~\url{http://www.contactandcoil.com/twincat-3-tutorial/structured-text/}}
         \end{column}
-\end{columns}
+    \end{columns}
 \end{frame}
 
 \section{Automated programming of PLCs}
 
 \begin{frame}{Automated programming of PLCs}
-\begin{itemize}
-    \item The IEC 61131-3 languages are static in their programming.
-    \item They are~\textbf{not} primarily designed for larger or dynamic systems.
-    \item Modern software engineering methods like model-driven development are not natively supported.
-    \item Rapid changes to the system become necessary.
-    \item Validation and verification are crucial for automation systems.
-\end{itemize}
-$\Rightarrow$ Possible Solution: Programming methods that can \textbf{automatically} and \textbf{correctly} transform high-level specifications to low-level IEC 61131-3 code.
+    \begin{itemize}
+        \item The IEC 61131-3 languages are procedural.
+        \item Not optimized for larger or dynamic systems.
+        \item No support for modern software engineering methods.
+        \begin{itemize}
+            \item Rapid changes to the system.
+            \item Validation and verification.
+        \end{itemize}
+    \end{itemize}
+    $\Rightarrow$ Possible Solution:~\textbf{Automated generation} of IEC 61131-3 code.
 \end{frame}
 
 \subsection{C/C++-based programming}
 
 \begin{frame}{C/C++-based programming}
 \begin{itemize}
-	\item C/C++ are widespread systems programming languages.
-    \item They allow access to low-level system operations (e.g. memory management).
+	\item Widespread systems programming languages.
     \item They support high-level abstractions (e.g. classes, modules).
-	\item Widely used in micro controller programming.
-    \item Currently two~\acrshort{acn:PLC} development environment allow for C/C++ POUs:
+    \item Supported by two~\acrshort{acn:PLC} development environments:
     \begin{itemize}
         \item Beckhoff TwinCAT3 
         \item B\&R Automation Studio
     \end{itemize}
-    \item Both provide tools to ensure compliance with the~\acrshort{acn:PLC} execution semantics.
 \end{itemize}
+\pause
 $\Rightarrow$ High-level programming is supported; Automatic generation of code or validation is not supported.
 \end{frame}
 
@@ -228,52 +206,29 @@ $\Rightarrow$ High-level programming is supported; Automatic generation of code 
 \begin{frame}{Formal specification based}
 \begin{itemize}
     \item Code generation from a formal specification.
-    \item Allows for validation of the code against the specification.
-    \item Design from a high-level abstraction of the control problem.
-    \item Can either be model or non-model based.
-    \item Widespread practice in software engineering or industrial plant design.
+    \item Design from a high-level abstraction.
+    \item Widespread practice in software engineering.
 \end{itemize}
 In the following section I present these formalizations:
 \begin{itemize}
-    \item Linear Temporal Logic
     \item UML/SysML
     \item Simulink
     \item PLCspecif
 \end{itemize}
 \end{frame}
 
-\begin{frame}{Linear Temporal Logic}
-\begin{itemize}
-	\item Modal logic that allows to specify time based behavior.
-    \item Conditions can be formalized over time constraints (e.g. something is true for all possible future states).
-	\item Time is represented as a sequence of system states.
-    \item \cite{Kuzmin:2013} use this to specify the controller behavior:
-    \begin{itemize}
-        \item Reactions to input changes are represented as LTL formula.
-        \item Provides strong verification and validation methods.
-        \item Not intuitive to use.
-        \item Requires a deep understanding of modal logic.
-    \end{itemize}
-\end{itemize}
-
-\begin{equation}
-GX\left(V > \_V \rightarrow OldValCond \land FiringCond \land V := NewValExpr \right)
-\label{eq:increase}
-\end{equation}
-
-\end{frame}
-
 \begin{frame}{UML / SysML}
 \begin{columns}
     \begin{column}{0.6\textwidth}
         \begin{itemize}
-            \item \acrfull{acn:UML} and~\acrfull{acn:SysML} are widespread modeling languages.
-            \item Several approaches use adapted state-charts and class-diagrams to model systems.
-            \item \cite{WITSCH2015} and~\cite{VH:2014} define plcML.
+            \item \acrfull{acn:UML}
+            \item  \acrfull{acn:SysML}
+            \item Behavior: state-charts.
+            \item Structure: class-diagrams..
+            \item \cite{WITSCH2015} and~\cite{VH:2014} define plcML
             \begin{itemize}
-                \item Allows to specify structure and behavior of the controller and its in-/outputs.
-                \item Enables faster and more reliable controller development.
-                \item The model can be translated into ST code.
+                \item Faster and more reliable development.
+                \item Model can be translated into ST code.
             \end{itemize}
         \end{itemize}
     \end{column}
@@ -289,11 +244,11 @@ GX\left(V > \_V \rightarrow OldValCond \land FiringCond \land V := NewValExpr \r
 \begin{columns}
     \begin{column}{0.5\textwidth}
         \begin{itemize}
-            \item Modeling software integrated into MathWorks MATLAB environment.
-            \item Allows modeling and simulation of systems in multiple domains via toolboxes.
-            \item Provide a coder that translates a model into ST code.
-            \item \cite{7535242} extend this workflow with bound model checker verification.
-            \item Easy to use method for designing large and complex systems.
+            \item Modeling software for the MATLAB environment.
+            \item Model, Simulate \& Verify.
+            \item Supports translation to ST.
+            \item Easy to use method.
+            \item Scales well.
         \end{itemize}
     \end{column}
     \begin{column}{0.5\textwidth}
@@ -304,28 +259,26 @@ GX\left(V > \_V \rightarrow OldValCond \land FiringCond \land V := NewValExpr \r
 \end{frame}
 
 \begin{frame}{plcSpecif}
-\begin{itemize}
-    \item \cite{7819191} specify a custom graphical formalization language.
-    \item It models systems with interacting modules.
-    \item Modules consist of a structural and behavioral description.
-    \item Behavior is represented as a mealy machine.
-    \item They provide methods for formally verifying system properties.
-    \item Additionally they focused on ease of use, traceability and readability.
-    \item It is designed specifically for safety critical use cases.
-\end{itemize}
+    \begin{itemize}
+        \item Developed by \cite{7819191}.
+        \item Module based specification.
+        \item Verification methods are presented.
+        \item Focus on ease of use \& traceability.
+        \item Reliability as a core feature.
+    \end{itemize}
 \end{frame}
 
 \section{Risks of automated programming}
 
 \begin{frame}{Risks of automated programming}
 \begin{itemize}
-    \item \acrlong{acn:PLC} are often used in safety critical or real-time use cases.
-    \item This requires a clear assessment of possible risks.
-    \item Automatic generation of source code has inherent risks.
+    \item Safety and real-time use cases.
+    \item Clear assessment of possible risks required.
+    \item Inherent risks to code generation.
 \end{itemize}
+$\Rightarrow$ They need to be addressed before the system can be deployed!
 \pause
-$\Rightarrow$ They need to be addressed before the system can be deployed.
-\pause
+\\
 Two components of the risk are addressed:
 \begin{itemize}
     \item Transformation function correctness
@@ -337,18 +290,17 @@ Two components of the risk are addressed:
 
 \begin{block}{Transformation function correctness}
 	\begin{itemize}
-		\item Code generators have to ensure consistency between the code and modeled behavior.
-		\item Must be specified and analyzed for every approach.
-        \item Proof is often only given for common cases not all possible cases.
-        \item Additionally traceability between the specification and the code should be possible.
+		\item Consistency between the code and modeled behavior.
+        \item Often no detailed analysis.
+        \item Traceability should be possible.
 	\end{itemize}
 \end{block}
 \pause
 \begin{block}{Runtime guarantees}
     \begin{itemize}
-        \item Behavior of the model on the actual~\acrshort{acn:PLC} has to be regarded.
-        \item Transformations often use custom state machines that work over multiple PLC cycles.
-        \item Validation methods have to ensure that the modeled behavior is consistent with the physical behavior.
+        \item Runtime behavior is the relevant factor.
+        \item Custom state machines that work over multiple PLC cycles.
+        \item Verification on the target platform.
     \end{itemize}
 \end{block}
 \end{frame}
@@ -357,17 +309,21 @@ Two components of the risk are addressed:
 \begin{frame}{Conclusions}
 
 \begin{itemize}
-    \item Modern automation systems require new programming methods.
+    \item New programming methods are required.
     \pause
-    \item Automated code generation from high-level abstractions is a viable options.
+    \item Automated code generation is a viable options.
     \pause
-    \item There are already well supported and capable approaches available (Simulink PLC coder, plcML)
+    \item Well supported and capable approaches available 
     \begin{itemize}
-        \item They are more effecitve and efficient as current approaches.
-        \item They have high user acceptance and lower initial skill requirements.
+        \item Simulink PLC coder
+        \item plcML
     \end{itemize}
     \pause
-    \item Efficient methods for risk analysis and validation on the deployment target are required.
+    \item Effecitve and efficient.
+    \pause
+    \item High user acceptance and lower initial skill requirements.
+    \pause
+    \item Efficient methods for risk analysis and verification are required.
 \end{itemize}
 \end{frame}
 
@@ -382,8 +338,6 @@ Two components of the risk are addressed:
 
 \appendix
 \beginbackup
-
-\nocite{*}
 
 \begin{frame}[allowframebreaks]{Glossaries}
 \printglossaries
