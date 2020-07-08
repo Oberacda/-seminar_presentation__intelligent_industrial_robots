@@ -170,6 +170,22 @@
     \end{columns}
 \end{frame}
 
+\subsection{C/C++-based programming}
+
+\begin{frame}{C/C++-based programming}
+\begin{itemize}
+    \item Widespread systems programming languages.
+    \item They support high-level abstractions (e.g. classes, modules).
+    \item Supported by two~\acrshort{acn:PLC} development environments:
+    \begin{itemize}
+        \item Beckhoff TwinCAT3 
+        \item B\&R Automation Studio
+    \end{itemize}
+\end{itemize}
+\pause
+$\Rightarrow$ High-level programming is supported; Automatic generation of code or validation is not supported.
+\end{frame}
+
 \section{Automated programming of PLCs}
 
 \begin{frame}{Automated programming of PLCs}
@@ -185,22 +201,6 @@
     $\Rightarrow$ Possible Solution:~\textbf{Automated generation} of IEC 61131-3 code.
 \end{frame}
 
-\subsection{C/C++-based programming}
-
-\begin{frame}{C/C++-based programming}
-\begin{itemize}
-	\item Widespread systems programming languages.
-    \item They support high-level abstractions (e.g. classes, modules).
-    \item Supported by two~\acrshort{acn:PLC} development environments:
-    \begin{itemize}
-        \item Beckhoff TwinCAT3 
-        \item B\&R Automation Studio
-    \end{itemize}
-\end{itemize}
-\pause
-$\Rightarrow$ High-level programming is supported; Automatic generation of code or validation is not supported.
-\end{frame}
-
 \subsection{Formal description based}
 
 \begin{frame}{Formal specification based}
@@ -211,33 +211,9 @@ $\Rightarrow$ High-level programming is supported; Automatic generation of code 
 \end{itemize}
 In the following section I present these formalizations:
 \begin{itemize}
-    \item UML/SysML
     \item Simulink
     \item PLCspecif
 \end{itemize}
-\end{frame}
-
-\begin{frame}{UML / SysML}
-\begin{columns}
-    \begin{column}{0.6\textwidth}
-        \begin{itemize}
-            \item \acrfull{acn:UML}
-            \item  \acrfull{acn:SysML}
-            \item Behavior: state-charts.
-            \item Structure: class-diagrams..
-            \item \cite{WITSCH2015} and~\cite{VH:2014} define plcML
-            \begin{itemize}
-                \item Faster and more reliable development.
-                \item Model can be translated into ST code.
-            \end{itemize}
-        \end{itemize}
-    \end{column}
-    \begin{column}{0.4\textwidth}
-        \includegraphics[width=\textwidth]{./figures/modAT4rMS_struct.png}
-       {\footnotesize  Source:~\cite{VH:2014}}
-    \end{column}
-\end{columns}
-
 \end{frame}
 
 \begin{frame}{Simulink}
@@ -316,7 +292,7 @@ Two components of the risk are addressed:
     \item Well supported and capable approaches available 
     \begin{itemize}
         \item Simulink PLC coder
-        \item plcML
+        \item plcSpecif
     \end{itemize}
     \pause
     \item Effecitve and efficient.
@@ -345,6 +321,31 @@ Two components of the risk are addressed:
 
 \begin{frame}[allowframebreaks]{References}
 \printbibliography
+\end{frame}
+
+\section{Other Approaches}
+
+\begin{frame}{UML / SysML}
+\begin{columns}
+    \begin{column}{0.6\textwidth}
+        \begin{itemize}
+            \item \acrfull{acn:UML}
+            \item  \acrfull{acn:SysML}
+            \item Behavior: state-charts.
+            \item Structure: class-diagrams..
+            \item \cite{WITSCH2015} and~\cite{VH:2014} define plcML
+            \begin{itemize}
+                \item Faster and more reliable development.
+                \item Model can be translated into ST code.
+            \end{itemize}
+        \end{itemize}
+    \end{column}
+    \begin{column}{0.4\textwidth}
+        \includegraphics[width=\textwidth]{./figures/modAT4rMS_struct.png}
+        {\footnotesize  Source:~\cite{VH:2014}}
+    \end{column}
+\end{columns}
+
 \end{frame}
 
 \backupend
